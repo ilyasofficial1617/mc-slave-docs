@@ -16,8 +16,8 @@ def convert_to_markdown(html_content):
     return md(html_content, heading_style="ATX")
 
 def save_markdown(content, filename):
-    os.makedirs('output', exist_ok=True)
-    with open(f'output/{filename}.md', 'w', encoding='utf-8') as f:
+    os.makedirs('jsmacros_docs', exist_ok=True)
+    with open(f'jsmacros_docs/{filename}.md', 'w', encoding='utf-8') as f:
         f.write(content)
 
 def is_valid_link(href):
