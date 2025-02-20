@@ -96,6 +96,16 @@ def main():
         print("Waiting 15 seconds for initial load...")
         time.sleep(15)  # Wait 15 seconds for initial load
 
+        # Scrape content from #mainNav and save it
+        print("Getting main navigation content...")
+        main_nav = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.ID, "mainNav"))
+        )
+        main_nav_content = main_nav.get_attribute('innerHTML')
+        markdown_content = convert_to_markdown(main_nav_content)
+        save_markdown(markdown_content, 'main_nav')
+        print("Saved markdown file: main_nav.md")
+
         processed_urls = set()
         url_queue = []
 
